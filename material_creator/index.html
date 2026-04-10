@@ -556,6 +556,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Material Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-channel-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Channel Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rendering-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rendering Icons
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -711,6 +739,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Material Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-channel-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic Channel Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rendering-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rendering Icons
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -878,7 +934,23 @@
 <p><img alt="Material Creator" src="../videos/material_creator.gif" /></p>
 <h2 id="material-manager">Material Manager</h2>
 <p><img alt="Material Manager" src="../images/material_manager.PNG" /></p>
-<p>Browse all materials, smart materials, and alphas currently in the library. Switch between the <strong>Materials</strong>, <strong>Smart Materials</strong>, and <strong>Alphas</strong> tabs. Use the search bar to filter by name. Select one or more thumbnails to see selection info in the toolbar.</p>
+<p>Browse all materials, smart materials, and alphas currently in the library. Switch between the <strong>Materials</strong>, <strong>Smart Materials</strong>, and <strong>Alphas</strong> tabs. Use the search bar to filter by name.</p>
+<h3 id="automatic-channel-detection">Automatic Channel Detection</h3>
+<p>When you add a material to your library, Copernicus Painter automatically maps each texture file to the correct channel (Base Color, Roughness, Normal, etc.) based on filename keywords. In most cases this works without any manual setup.</p>
+<p>However the detection can sometimes be wrong. In that case you can manually configure the channel mapping for a material:</p>
+<ol>
+<li>Select the material thumbnail in the <strong>Materials</strong> tab</li>
+<li>Click <strong>Setup Material Channels</strong></li>
+<li>Manually assign each texture file to the correct channel</li>
+<li>Confirm — the material will receive a <strong>★</strong> star icon to indicate it has a custom channel mapping</li>
+</ol>
+<h3 id="rendering-icons">Rendering Icons</h3>
+<p>If a material or alpha thumbnail is missing, incorrect, or was never generated, you can re-render it directly from the Material Manager:</p>
+<ul>
+<li>Select the material or alpha thumbnail</li>
+<li>Click <strong>Render Icon</strong></li>
+</ul>
+<p>For smart materials, if the icon failed during creation (e.g. the shaderball render did not complete), you can also re-render it here by selecting it in the <strong>Smart Materials</strong> tab and clicking <strong>Render Icon</strong>.</p>
 <hr />
 <h2 id="smart-material-creator">Smart Material Creator</h2>
 <p><img alt="Smart Material Creator" src="../images/smart_mat_creator.PNG" /></p>
