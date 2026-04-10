@@ -2,3 +2,9 @@
     height: 100px;
     width: auto;
 }
+
+:root {
+    --md-primary-fg-color: #2b2b2b;
+    --md-primary-fg-color--light: #3a3a3a;
+    --md-primary-fg-color--dark: #1a1a1a;
+}
