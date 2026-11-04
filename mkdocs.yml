@@ -1,0 +1,36 @@
+site_name: Copernicus Painter
+site_url: https://matijaKos.github.io/Copernicus_Painter_Documentation
+repo_url: https://github.com/matijaKos/Copernicus_Painter_Documentation
+repo_name: Copernicus Painter Docs
+
+theme:
+  name: material
+  logo: images/copLogo.png
+  favicon: images/copLogo.png
+  palette:
+    scheme: slate
+    primary: black
+    accent: grey
+  features:
+    - navigation.tabs
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Your First Project: workflow.md
+  - Layers, Masks and Filters: layers.md
+  - Painting: painting.md
+  - Shelf and Libraries: library.md
+  - Making Smart Materials: material_creator.md
