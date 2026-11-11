@@ -287,6 +287,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="../path/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  3D Path
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../library/" class="md-tabs__link">
         
   
@@ -507,6 +526,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../library/" class="md-nav__link">
         
   
@@ -659,6 +705,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#generators-procedurals-grunges-filters-and-alphas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generators, procedurals, grunges, filters and alphas
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -753,6 +810,17 @@
     <span class="md-ellipsis">
       
         Names the Painter reads
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generators-procedurals-grunges-filters-and-alphas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generators, procedurals, grunges, filters and alphas
       
     </span>
   </a>
@@ -900,6 +968,58 @@
 <p class="admonition-title">Normal strength</p>
 <p>Copernicus' Height to Normal strength works per UV unit, so a fine pattern gets very strong normals quickly. The samples are set so their normal map is about 95% flat on average. If a material looks all bumps, lower its normal strength.</p>
 </div>
+<h2 id="generators-procedurals-grunges-filters-and-alphas">Generators, procedurals, grunges, filters and alphas<a class="headerlink" href="#generators-procedurals-grunges-filters-and-alphas" title="Permanent link">&para;</a></h2>
+<p>They are made the same way, as Copernicus subnets saved as <code>.cpio</code> files; only their inputs, outputs and the library folder they're in differ:</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Inputs</th>
+<th>Outputs</th>
+<th>Library folder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generator</td>
+<td>bakes (<code>Curvature</code>, <code>Occlusion</code>...)</td>
+<td><code>Mask</code></td>
+<td><code>generators/</code></td>
+</tr>
+<tr>
+<td>Procedural (noise, pattern)</td>
+<td>none</td>
+<td><code>Mask</code></td>
+<td><code>procedurals/</code></td>
+</tr>
+<tr>
+<td>Grunge</td>
+<td>none</td>
+<td><code>Mask</code> (or just an image file)</td>
+<td><code>grunges/</code></td>
+</tr>
+<tr>
+<td>Layer filter</td>
+<td>the channels it changes (<code>BaseColor</code>...)</td>
+<td>the same channels</td>
+<td><code>filters/Layer/</code></td>
+</tr>
+<tr>
+<td>Mask filter</td>
+<td><code>Mask</code></td>
+<td><code>Mask</code></td>
+<td><code>filters/Mask/</code></td>
+</tr>
+<tr>
+<td>Alpha</td>
+<td>an image file (white paints, black doesn't)</td>
+<td></td>
+<td><code>alphas/</code></td>
+</tr>
+</tbody>
+</table>
+<p>Save one as a <strong>Smart Mask</strong> with the Library window (<strong>Use selected subnet</strong> saves a subnet you built anywhere), then move its folder from <code>smart_masks/</code> into the folder of its kind. The shelf picks it up there.</p>
+<p><strong>Help &gt; Example: making assets</strong> opens a network with one sample of each kind, each with a note on how it's built.</p>
 
 
 

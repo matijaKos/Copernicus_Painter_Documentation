@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://matijaKos.github.io/Copernicus_Painter_Documentation/library/">
       
       
-        <link rel="prev" href="../painting/">
+        <link rel="prev" href="../path/">
       
       
         <link rel="next" href="../material_creator/">
@@ -287,6 +287,25 @@
   
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../path/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  3D Path
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
     
   
   
@@ -506,6 +525,33 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Path
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -584,6 +630,17 @@
     <span class="md-ellipsis">
       
         Your own library
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-layers-as-a-smart-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving layers as a smart material
       
     </span>
   </a>
@@ -673,6 +730,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#saving-layers-as-a-smart-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving layers as a smart material
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -708,8 +776,8 @@
 <tbody>
 <tr>
 <td><strong>Materials</strong></td>
-<td>Procedural materials with controls (Skin, Fabric, Leather, Metal, Wood, Stone, Concrete, Plastic)</td>
-<td>Drag onto Layers: a new layer</td>
+<td>Procedural materials with controls (Skin, Fabric, Leather, Metal, Wood, Stone, Concrete, Plastic), and the layers and folders you saved as smart materials</td>
+<td>Drag onto Layers: a new layer (a saved one: its layers)</td>
 </tr>
 <tr>
 <td><strong>Textures</strong></td>
@@ -770,7 +838,8 @@
 </ul>
 <p>A library folder has one folder per tab:</p>
 <pre><code>MyLibrary/
-├── materials/        procedural materials: a folder X with X.cpio (+ X.jpg icon)
+├── materials/        procedural materials: a folder X with X.cpio (+ X.jpg icon),
+│                     or a saved layer stack: X.cpstack (+ X.jpg)
 ├── textures/         texture sets: a folder of images (+ shader.jpg icon)
 ├── smart_masks/      X.cpio
 ├── brushes/          X.json brush presets (+ X.png)
@@ -783,6 +852,20 @@
 <p>Inside each, any folder that isn't an item is a <strong>group</strong>, at any depth (<code>materials/Metal/Rust/...</code>). The thumbnail sits next to the item: <code>&lt;name&gt;.jpg</code> or <code>.png</code>, <code>shader.jpg</code> for a texture set, and an alpha is its own.</p>
 <p><strong>Texture sets</strong> are read by their file names: <code>basecolor</code>/<code>albedo</code>/<code>diffuse</code>, <code>roughness</code>, <code>metal</code>, <code>normal</code>, <code>height</code>/<code>displacement</code>, <code>ao</code>/<code>occlusion</code>, <code>opacity</code>... A folder of textures downloaded from Poly Haven or similar works as it is.</p>
 <p>Materials and masks you make yourself are saved here by the Library window: see <a href="../material_creator/">Making smart materials</a>.</p>
+<h2 id="saving-layers-as-a-smart-material">Saving layers as a smart material<a class="headerlink" href="#saving-layers-as-a-smart-material" title="Permanent link">&para;</a></h2>
+<p>Like Substance Painter's smart materials: a layer, or a folder with everything in it, saved from the Layers panel and used again on any model.</p>
+<ol>
+<li>Build it: layers, masks (generators, smart masks, fills...), filters, folders, your colours and settings.</li>
+<li>Right-click the layer or folder: <strong>Save as Smart Material…</strong>, and give it a name. It goes to the <strong>Materials</strong> tab of your first library (add a library in Settings first), with a picture of the 3D view as its icon.</li>
+<li>On another project, drag it from the shelf onto the Layers panel: the same layers come back, with their masks, filters and settings. Generators and smart masks follow the new model's edges and cavities. One undo takes it away.</li>
+</ol>
+<p>What doesn't come along, because it belongs to the model it was made on:</p>
+<ul>
+<li><strong>Hand-painted masks</strong> come back <strong>empty</strong>, ready to paint on the new model; so do island selections and 3D Path masks (their paths).</li>
+<li>A gizmo's position (Planar, Triplanar...) starts at the new model; its rotation and size are kept.</li>
+<li><strong>Merged layers</strong> are left out (they are baked pictures of the old model).</li>
+</ul>
+<p>To give it a better icon, replace <code>&lt;name&gt;.jpg</code> in its folder with your own picture.</p>
 
 
 

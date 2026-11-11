@@ -291,6 +291,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="../path/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  3D Path
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../library/" class="md-tabs__link">
         
   
@@ -560,10 +579,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-export" class="md-nav__link">
+  <a href="#6-see-it-rendered" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Export
+        6. See it rendered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Export
       
     </span>
   </a>
@@ -631,6 +661,33 @@
     
   
     Painting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../path/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Path
   
 
     
@@ -796,10 +853,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-export" class="md-nav__link">
+  <a href="#6-see-it-rendered" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Export
+        6. See it rendered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Export
       
     </span>
   </a>
@@ -880,7 +948,7 @@
 <h2 id="2-the-3d-and-2d-views">2. The 3D and 2D views<a class="headerlink" href="#2-the-3d-and-2d-views" title="Permanent link">&para;</a></h2>
 <p>The viewer is split. On the left is your model; on the right, the <strong>2D view</strong>: the same model laid out flat by its UVs, like Substance Painter's 2D view. Everything shows in both, and you can paint in both.</p>
 <p><img alt="The 3D and 2D views" src="../videos/flat_view.gif" /></p>
-<p>In the 2D view you <strong>pan</strong> and <strong>zoom</strong> as in any Houdini view (hold <strong>Space</strong> and drag with the middle mouse to pan; the wheel zooms towards the pointer). It never rotates, and moving it is not an edit, so it adds nothing to undo. <strong>2D View</strong> on the shelf puts it back on its home framing.</p>
+<p>In the 2D view you <strong>pan</strong> and <strong>zoom</strong> as in any Houdini view (hold <strong>Space</strong> and drag with the middle mouse to pan; the wheel zooms towards the pointer). It never rotates, and moving it is not an edit, so it adds nothing to undo. <strong>2D View</strong> on the shelf switches between the 3D view alone and both views; the 2D view opens on its home framing.</p>
 <h2 id="3-bake-the-mesh-maps">3. Bake the mesh maps<a class="headerlink" href="#3-bake-the-mesh-maps" title="Permanent link">&para;</a></h2>
 <p>Click <strong>Bake</strong>. The baked maps are what generators and smart materials read: curvature for edge wear, occlusion for dirt in the cavities, position for gradients.</p>
 <p><img alt="Bake" src="../images/bake.png" /></p>
@@ -891,7 +959,46 @@
 <p>The GIF shows a red brick, then a tiger skin over it, a <strong>Dirt</strong> mask so the tiger only shows in the cavities, and an <strong>HSL</strong> filter on the tiger. All of that is on <a href="../layers/">Layers, masks and filters</a>.</p>
 <h2 id="5-paint">5. Paint<a class="headerlink" href="#5-paint" title="Permanent link">&para;</a></h2>
 <p>Click a brush on the <strong>Brushes</strong> shelf: the layer gets a paint mask and you are painting. See <a href="../painting/">Painting</a>.</p>
-<h2 id="6-export">6. Export<a class="headerlink" href="#6-export" title="Permanent link">&para;</a></h2>
+<h2 id="6-see-it-rendered">6. See it rendered<a class="headerlink" href="#6-see-it-rendered" title="Permanent link">&para;</a></h2>
+<p><strong>Render</strong> on the shelf shows the model in Karma, lit by an environment map, from where you were looking, like Substance Painter's Iray view. What you paint shows in the render too. Click <strong>Render</strong> again, or pick any tool (a brush, the Path tool, Edit Gizmo...), and you are back to painting, in the views you had.</p>
+<p>The render lives in the project, in a Solaris network called <strong>RENDER</strong> next to the textures. It is rebuilt each time you click Render.</p>
+<p><strong>Settings</strong> on the shelf has a <strong>Render (Karma preview)</strong> section, so each computer can keep it fast enough:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Engine</strong></td>
+<td><em>CPU</em> (Karma CPU) or <em>GPU</em> (Karma XPU, with a supported graphics card)</td>
+</tr>
+<tr>
+<td><strong>Quality</strong></td>
+<td><em>Fast</em> (few samples, denoised), <em>Medium</em>, <em>High</em> (slow)</td>
+</tr>
+<tr>
+<td><strong>Cores left free</strong></td>
+<td>CPU cores left to the rest of the computer while the render is on</td>
+</tr>
+<tr>
+<td><strong>Environment</strong></td>
+<td>An HDRI that comes with Houdini, or your own file (<strong>Browse…</strong>)</td>
+</tr>
+<tr>
+<td><strong>Rotation</strong>, <strong>Exposure</strong></td>
+<td>Turn and brighten the environment</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Save Settings</strong> applies them at once, also to a render that is on.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The render is a preview in the viewport. To render to disk, <strong>Export</strong> the textures and use them in your own Solaris or Karma scene.</p>
+</div>
+<h2 id="7-export">7. Export<a class="headerlink" href="#7-export" title="Permanent link">&para;</a></h2>
 <p>Click <strong>Export</strong>.</p>
 <p><img alt="Export" src="../images/export.png" /></p>
 <table>
