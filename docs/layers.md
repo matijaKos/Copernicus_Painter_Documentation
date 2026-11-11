@@ -115,6 +115,19 @@ The merged layer looks exactly the same: masks, opacities and blends are baked i
 
 Layers blended **Normal** merge exactly; Multiply, Screen and Overlay layers merge closely but not exactly.
 
+## Decals
+
+A decal is an image laid on the model, like a sticker: a logo, a label, a graphic.
+
+- **Decal** on the toolbar picks an image and lays it in the middle of the 3D view; or **drop an image file** (from Explorer) **onto the 3D view** and it lands where you drop it.
+- The image is the layer's colour; its **alpha** cuts its shape out (an image without alpha shows whole). It is a **Planar** projection, clipped to its shape: **Edit Gizmo** moves, rotates and scales it.
+- **Warp** (any Planar layer): **Edit Warp** shows a grid on the gizmo in the viewport: drag its points to bend the image onto the surface. **Split H**, **Split V** and **Split X** (or H, V, X in the viewport) add a row, a column or both; **Reset** (R) flattens it again.
+- Like any layer it takes masks, filters, opacity; turn on its other channels (Height, Roughness...) in Properties for a raised or glossy decal.
+
+## Height to Normal
+
+**Height to Normal** at the top of the Layers panel puts the stack's height in its normal map, as Substance Painter does: whatever raises Height (stitches, stamps, a decal or a painted bump, a material's own height) shows in the normals too, in the viewport and in the export. 0 turns it off. New projects start at 0.5; projects made before it was added start at 0, so they look as they did.
+
 ## Undo
 
 Every change here (a layer added, a mask's blend mode, a slider let go, a filter deleted) is one undo step.
