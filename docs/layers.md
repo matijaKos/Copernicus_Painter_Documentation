@@ -25,7 +25,7 @@ Above the stack, like Substance Painter's:
 | **Mask** | Add a mask to the selected layer (the same list as Add Mask) |
 | **Generator** | Add a generator from your libraries (Dirt, Edge Wear...) as a mask |
 | **Filter** | Add a filter from your libraries |
-| **New Folder** | A folder above the selected layer |
+| **New Folder** | A folder above the selected layer (inside its folder, if it is in one) |
 | **Duplicate**, **Delete** | On what is selected: a layer, a mask or a filter |
 
 What is selected is highlighted in orange: a layer, or a mask or filter row. Duplicate and Delete act on exactly that (their tooltips say which).
@@ -99,12 +99,11 @@ A copy is complete: a paint mask keeps its strokes, a generator or filter its se
 
 Folders group layers, like Substance Painter's.
 
-- **New Folder** (toolbar, or right-click a layer) adds an empty folder above the selected layer.
-- To put a layer in: drop it **on the folder's row**, or **below the open folder** among its layers. Right-click a layer for **Move into Folder** / **Move out of Folder**. A material dropped into an open folder lands in it.
-- A folder's **opacity**, **eye** and **masks** act on all its layers together: its layers are blended as usual, then the folder mixes that over what is below it.
-- Moving, duplicating or deleting a folder takes its layers along. Undo brings everything back.
-
-Folders don't go inside folders, and filters go on the layers in a folder rather than on the folder.
+- **New Folder** (toolbar, or right-click a layer) adds an empty folder above the selected layer, in the same folder: with a layer in a folder selected, you get a folder inside that folder.
+- To put a layer (or a folder) in: drop it **on the folder's row**, or **below the open folder** among its layers. Right-click for **Move into Folder** / **Move out of Folder** (out goes one level up). A material dropped into an open folder lands in it.
+- **Folders go inside folders**, as deep as you like; each level is indented a step more. A folder never goes inside itself or one of its own folders.
+- A folder's **opacity**, **eye**, **masks** and **filters** act on everything in it together: its layers are blended as usual, its filters work on that result (a Blur or HSL on the whole group), then the folder mixes it over what is below.
+- Moving, duplicating, merging or deleting a folder takes everything in it along. Undo brings it all back.
 
 ## Merge and Merge Down
 
