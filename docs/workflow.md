@@ -54,7 +54,28 @@ The GIF shows a red brick, then a tiger skin over it, a **Dirt** mask so the tig
 
 Click a brush on the **Brushes** shelf: the layer gets a paint mask and you are painting. See [Painting](painting.md).
 
-## 6. Export
+## 6. See it rendered
+
+**Render** on the shelf shows the model in Karma, lit by an environment map, from where you were looking, like Substance Painter's Iray view. What you paint shows in the render too. Click **Render** again, or pick any tool (a brush, the Path tool, Edit Gizmo...), and you are back to painting, in the views you had.
+
+The render lives in the project, in a Solaris network called **RENDER** next to the textures. It is rebuilt each time you click Render.
+
+**Settings** on the shelf has a **Render (Karma preview)** section, so each computer can keep it fast enough:
+
+| Setting | What it does |
+|---|---|
+| **Engine** | *CPU* (Karma CPU) or *GPU* (Karma XPU, with a supported graphics card) |
+| **Quality** | *Fast* (few samples, denoised), *Medium*, *High* (slow) |
+| **Cores left free** | CPU cores left to the rest of the computer while the render is on |
+| **Environment** | An HDRI that comes with Houdini, or your own file (**Browse…**) |
+| **Rotation**, **Exposure** | Turn and brighten the environment |
+
+**Save Settings** applies them at once, also to a render that is on.
+
+!!! note
+    The render is a preview in the viewport. To render to disk, **Export** the textures and use them in your own Solaris or Karma scene.
+
+## 7. Export
 
 Click **Export**.
 

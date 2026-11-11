@@ -33,8 +33,10 @@ What is selected is highlighted in orange: a layer, or a mask or filter row. Dup
 At the top of the panel:
 
 - **Groups**: the texture sets of the project. Each has its own stack; the eye hides it in the viewer.
-- **Channel**: which channel the viewer shows (BaseColor, Roughness, Normal...).
+- **Channel**: which channel's opacity and blend mode the layer rows show and edit (BaseColor, Roughness, Normal...).
+- **View**: what the 3D and 2D views show: **Material**, or one channel alone (BaseColor, Roughness, Metalness, Normal, Height...), flat and unlit, like Substance Painter's channel views. It is only a way of looking, not an edit (no undo step), and the project remembers it.
 - **Resolution**: the project's texture size.
+- **Height to Normal**: see [below](#height-to-normal).
 
 ## Properties
 
@@ -46,7 +48,7 @@ For a layer:
 
 - **Fill**: how it's put on the model.
     - **Projection**: *UV*, or *Planar*, *Triplanar*, *Cylinder*, *Spherical* with a gizmo in the viewer (**Edit Gizmo**). **Clip to shape** limits it to the gizmo.
-    - **Tiling**, **Offset** and **Rotation**. The lock keeps U and V together.
+    - **Tiling**, **Offset** and **Rotation**. The lock keeps U and V together. On a smart material, Tiling and Offset scale and move its pattern (grain, noise, grunge), while what follows the model (edge wear, dirt in the cavities) stays where it is. Rotation applies to image materials only.
 - **Material**: which channels the layer writes (click to turn one off) and their values.
 - The material's own controls: colours, patterns, wear, grain... whatever its maker put on it.
 
