@@ -32,7 +32,7 @@ The viewer is split. On the left is your model; on the right, the **2D view**: t
 
 ![The 3D and 2D views](videos/flat_view.gif)
 
-In the 2D view you **pan** and **zoom** as in any Houdini view (hold **Space** and drag with the middle mouse to pan; the wheel zooms towards the pointer). It never rotates, and moving it is not an edit, so it adds nothing to undo. **2D View** on the shelf puts it back on its home framing.
+In the 2D view you **pan** and **zoom** as in any Houdini view (hold **Space** and drag with the middle mouse to pan; the wheel zooms towards the pointer). It never rotates, and moving it is not an edit, so it adds nothing to undo. **2D View** on the shelf switches between the 3D view alone and both views; the 2D view opens on its home framing.
 
 ## 3. Bake the mesh maps
 

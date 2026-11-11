@@ -88,3 +88,20 @@ Names are CamelCase and matched ignoring case. A smart mask with an input named 
 
 !!! tip "Normal strength"
     Copernicus' Height to Normal strength works per UV unit, so a fine pattern gets very strong normals quickly. The samples are set so their normal map is about 95% flat on average. If a material looks all bumps, lower its normal strength.
+
+## Generators, procedurals, grunges, filters and alphas
+
+They are made the same way, as Copernicus subnets saved as `.cpio` files; only their inputs, outputs and the library folder they're in differ:
+
+| Kind | Inputs | Outputs | Library folder |
+|---|---|---|---|
+| Generator | bakes (`Curvature`, `Occlusion`...) | `Mask` | `generators/` |
+| Procedural (noise, pattern) | none | `Mask` | `procedurals/` |
+| Grunge | none | `Mask` (or just an image file) | `grunges/` |
+| Layer filter | the channels it changes (`BaseColor`...) | the same channels | `filters/Layer/` |
+| Mask filter | `Mask` | `Mask` | `filters/Mask/` |
+| Alpha | an image file (white paints, black doesn't) | | `alphas/` |
+
+Save one as a **Smart Mask** with the Library window (**Use selected subnet** saves a subnet you built anywhere), then move its folder from `smart_masks/` into the folder of its kind. The shelf picks it up there.
+
+**Help > Example: making assets** opens a network with one sample of each kind, each with a note on how it's built.

@@ -36,7 +36,7 @@ Pick the **CopernicusPainter** desktop from Houdini's desktop menu (top of the w
 |---|---|
 | **Project** | Create a project from a mesh, or resume one |
 | **Bake** | Bake the mesh maps (curvature, occlusion, position...) |
-| **2D View** | Split the viewer into 3D and 2D, or put the 2D view back on its framing |
+| **2D View** | Switch between the 3D view alone and 3D next to the 2D (UV) view |
 | **Export** | Write the textures |
 | **Library** | Make your own smart materials and smart masks |
 | **Settings** | Your library folders |
