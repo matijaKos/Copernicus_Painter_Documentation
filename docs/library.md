@@ -8,7 +8,7 @@ The shelf at the bottom of the Painter desktop shows your libraries, like Substa
 
 | Tab | What is in it | How you use it |
 |---|---|---|
-| **Materials** | Procedural materials with controls (Skin, Fabric, Leather, Metal, Wood, Stone, Concrete, Plastic) | Drag onto Layers: a new layer |
+| **Materials** | Procedural materials with controls (Skin, Fabric, Leather, Metal, Wood, Stone, Concrete, Plastic), and the layers and folders you saved as smart materials | Drag onto Layers: a new layer (a saved one: its layers) |
 | **Textures** | Image texture sets (BaseColor, Roughness, Normal... files) | Drag onto Layers |
 | **Smart Masks** | Your saved masks | Drag onto a layer: a mask |
 | **Brushes** | Brush presets | Click: paint with it; or drag onto a layer |
@@ -39,7 +39,8 @@ A library folder has one folder per tab:
 
 ```
 MyLibrary/
-├── materials/        procedural materials: a folder X with X.cpio (+ X.jpg icon)
+├── materials/        procedural materials: a folder X with X.cpio (+ X.jpg icon),
+│                     or a saved layer stack: X.cpstack (+ X.jpg)
 ├── textures/         texture sets: a folder of images (+ shader.jpg icon)
 ├── smart_masks/      X.cpio
 ├── brushes/          X.json brush presets (+ X.png)
@@ -55,3 +56,19 @@ Inside each, any folder that isn't an item is a **group**, at any depth (`materi
 **Texture sets** are read by their file names: `basecolor`/`albedo`/`diffuse`, `roughness`, `metal`, `normal`, `height`/`displacement`, `ao`/`occlusion`, `opacity`... A folder of textures downloaded from Poly Haven or similar works as it is.
 
 Materials and masks you make yourself are saved here by the Library window: see [Making smart materials](material_creator.md).
+
+## Saving layers as a smart material
+
+Like Substance Painter's smart materials: a layer, or a folder with everything in it, saved from the Layers panel and used again on any model.
+
+1. Build it: layers, masks (generators, smart masks, fills...), filters, folders, your colours and settings.
+2. Right-click the layer or folder: **Save as Smart Material…**, and give it a name. It goes to the **Materials** tab of your first library (add a library in Settings first), with a picture of the 3D view as its icon.
+3. On another project, drag it from the shelf onto the Layers panel: the same layers come back, with their masks, filters and settings. Generators and smart masks follow the new model's edges and cavities. One undo takes it away.
+
+What doesn't come along, because it belongs to the model it was made on:
+
+- **Hand-painted masks** come back **empty**, ready to paint on the new model; so do island selections and 3D Path masks (their paths).
+- A gizmo's position (Planar, Triplanar...) starts at the new model; its rotation and size are kept.
+- **Merged layers** are left out (they are baked pictures of the old model).
+
+To give it a better icon, replace `<name>.jpg` in its folder with your own picture.

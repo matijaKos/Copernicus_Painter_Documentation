@@ -12,7 +12,7 @@ Layers stack like in Substance Painter: the top layer covers the ones below. Eac
 - **Opacity** and the **blend mode** (Normal, Add, Subtract, Multiply, Screen, Overlay);
 - **delete** (the red cross).
 
-Drag rows to reorder them. Right-click a layer for **Duplicate Layer**, **New Folder**, **Move into / out of Folder**, **Merge** / **Merge Down** and **Add Mask**.
+Drag rows to reorder them. Right-click a layer for **Duplicate Layer**, **New Folder**, **Move into / out of Folder**, **Merge** / **Merge Down**, **Add Mask** and **Save as Smart Material…** (the layer or folder with all in it, to your library: see [Saving layers as a smart material](library.md#saving-layers-as-a-smart-material)).
 
 A dropped material or a new fill layer is selected, so its settings are in Properties straight away. A new fill layer shows its colour (BaseColor) from the start.
 
