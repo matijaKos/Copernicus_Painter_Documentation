@@ -855,21 +855,75 @@
 <li><strong>inputs</strong> named after the baked maps it reads (Curvature, Occlusion, Position...);</li>
 <li><strong>controls</strong> on the subnet, which show in Properties when its layer is selected.</li>
 </ul>
-<p>A <strong>smart mask</strong> is the same with one output, <strong>Mask</strong>. Both are made in the <strong>Library</strong> window and saved to your library. <strong>Help &gt; Make your own smart material</strong> is a step-by-step tour of it.</p>
+<p>A <strong>smart mask</strong> is the same with one output, <strong>Mask</strong>. Generators, procedurals, grunges, mask filters and layer filters are subnets too, with their own inputs and outputs. All of them are made in the <strong>Library</strong> window and saved to your library. <strong>Help &gt; Make your own smart material</strong> is a step-by-step tour of it.</p>
 <p><img alt="Making a smart material" src="../videos/smart_material.gif" /></p>
 <h2 id="1-open-the-library-window">1. Open the Library window<a class="headerlink" href="#1-open-the-library-window" title="Permanent link">&para;</a></h2>
 <p>Click <strong>Library</strong> on the Painter shelf.</p>
 <p><img alt="The Library window" src="../images/library_window.png" /></p>
-<p>At the top, pick <strong>Smart Material</strong> or <strong>Smart Mask</strong>.</p>
+<p>At the top, <strong>New</strong> (make one) or <strong>Edit</strong> (change one of your library), then <strong>What is it?</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>What it needs</th>
+<th>Where it goes while you build</th>
+<th>Saved to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Smart Material</strong></td>
+<td>outputs named after the channels it makes; inputs named after the bakes it reads</td>
+<td>a new layer</td>
+<td><code>materials/</code></td>
+</tr>
+<tr>
+<td><strong>Smart Mask</strong></td>
+<td>one mono output, <code>Mask</code></td>
+<td>the selected layer's masks</td>
+<td><code>smart_masks/</code></td>
+</tr>
+<tr>
+<td><strong>Generator</strong></td>
+<td><code>Mask</code> out, made from bakes (<code>Curvature</code>, <code>Occlusion</code>...)</td>
+<td>the selected layer's masks</td>
+<td><code>generators/</code></td>
+</tr>
+<tr>
+<td><strong>Procedural</strong></td>
+<td><code>Mask</code> out, a noise or a pattern, no inputs needed</td>
+<td>the selected layer's masks</td>
+<td><code>procedurals/</code></td>
+</tr>
+<tr>
+<td><strong>Grunge</strong></td>
+<td><code>Mask</code> out, wear or dirt as a pattern</td>
+<td>the selected layer's masks</td>
+<td><code>grunges/</code></td>
+</tr>
+<tr>
+<td><strong>Mask Filter</strong></td>
+<td>a <code>Mask</code> input (the masks below it) and a <code>Mask</code> output</td>
+<td>the selected layer's masks</td>
+<td><code>filters/</code></td>
+</tr>
+<tr>
+<td><strong>Layer Filter</strong></td>
+<td>per channel it changes, an input and an output of that name (<code>BaseColor</code> in, <code>BaseColor</code> out)</td>
+<td>the selected layer's filters</td>
+<td><code>filters/</code></td>
+</tr>
+</tbody>
+</table>
+<p>The window shows what the kind needs right under it.</p>
 <h2 id="2-new">2. New<a class="headerlink" href="#2-new" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Name</strong> it.</li>
-<li>Pick its <strong>Channels (outputs)</strong>: BaseColor, Roughness, Metalness, Normal, Height, Specular, AO, Opacity.</li>
+<li>Pick its <strong>Channels</strong>: for a smart material its outputs, for a layer filter the channels it changes.</li>
 <li>Pick the <strong>Baked maps it reads (inputs)</strong>: normal, worldnormal, position, occlusion, curvature, edge, cavity, thickness, height, alpha.</li>
-<li>Click <strong>Create and edit</strong>.</li>
+<li>Click <strong>Create</strong> (<strong>on a new layer</strong> for a smart material, <strong>on the selected layer</strong> for the rest).</li>
 </ul>
-<p>You get a layer with a ready subnet: every output is there, typed and named, fed by a constant, and every input is wired to its bake. The network editor opens inside it.</p>
-<p>A smart mask goes on the selected layer instead (<strong>Create on selected layer</strong>).</p>
+<p>You get a ready subnet that already meets the kind's needs: every output is there, typed and named, every input wired. A smart material's outputs start as constants; a filter's pass what comes in straight out, so it changes nothing until you build inside it. The network editor opens inside it.</p>
 <p>Already built a subnet yourself? Select it in the network editor and click <strong>Use selected subnet</strong>.</p>
 <h2 id="3-build-inside">3. Build inside<a class="headerlink" href="#3-build-inside" title="Permanent link">&para;</a></h2>
 <p>Replace the constants with your network. The layer updates while you work, so you see the material on the model as you build it.</p>
@@ -896,8 +950,8 @@
 <li><strong>Library</strong>: one of your library folders (Settings); the samples are read-only.</li>
 <li><strong>Group</strong>: optional, e.g. <code>Metal/Rust</code>.</li>
 </ul>
-<p>Click <strong>Save to Library</strong>. It is saved with a rendered icon, and appears on the <strong>Materials</strong> shelf (smart masks on <strong>Smart Masks</strong>).</p>
-<p><strong>From library &gt; Edit</strong> opens a saved one again as a new layer (for a mask, <strong>Add to selected layer</strong>).</p>
+<p>Click <strong>Save to Library</strong>. It goes into the folder of its kind (see the table above), with an icon: a rendered ball for a smart material, the mask it makes for the others. It appears on the shelf tab of its kind.</p>
+<p><strong>Edit</strong> opens one of your library's again: pick it and click <strong>Edit</strong> (on a new layer for a smart material, on the selected layer for the rest). Saving a sample makes a copy in your library; your own saves back where it was.</p>
 <h2 id="names-the-painter-reads">Names the Painter reads<a class="headerlink" href="#names-the-painter-reads" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -969,56 +1023,8 @@
 <p>Copernicus' Height to Normal strength works per UV unit, so a fine pattern gets very strong normals quickly. The samples are set so their normal map is about 95% flat on average. If a material looks all bumps, lower its normal strength.</p>
 </div>
 <h2 id="generators-procedurals-grunges-filters-and-alphas">Generators, procedurals, grunges, filters and alphas<a class="headerlink" href="#generators-procedurals-grunges-filters-and-alphas" title="Permanent link">&para;</a></h2>
-<p>They are made the same way, as Copernicus subnets saved as <code>.cpio</code> files; only their inputs, outputs and the library folder they're in differ:</p>
-<table>
-<thead>
-<tr>
-<th>Kind</th>
-<th>Inputs</th>
-<th>Outputs</th>
-<th>Library folder</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Generator</td>
-<td>bakes (<code>Curvature</code>, <code>Occlusion</code>...)</td>
-<td><code>Mask</code></td>
-<td><code>generators/</code></td>
-</tr>
-<tr>
-<td>Procedural (noise, pattern)</td>
-<td>none</td>
-<td><code>Mask</code></td>
-<td><code>procedurals/</code></td>
-</tr>
-<tr>
-<td>Grunge</td>
-<td>none</td>
-<td><code>Mask</code> (or just an image file)</td>
-<td><code>grunges/</code></td>
-</tr>
-<tr>
-<td>Layer filter</td>
-<td>the channels it changes (<code>BaseColor</code>...)</td>
-<td>the same channels</td>
-<td><code>filters/Layer/</code></td>
-</tr>
-<tr>
-<td>Mask filter</td>
-<td><code>Mask</code></td>
-<td><code>Mask</code></td>
-<td><code>filters/Mask/</code></td>
-</tr>
-<tr>
-<td>Alpha</td>
-<td>an image file (white paints, black doesn't)</td>
-<td></td>
-<td><code>alphas/</code></td>
-</tr>
-</tbody>
-</table>
-<p>Save one as a <strong>Smart Mask</strong> with the Library window (<strong>Use selected subnet</strong> saves a subnet you built anywhere), then move its folder from <code>smart_masks/</code> into the folder of its kind. The shelf picks it up there.</p>
+<p>Pick the kind in the Library window (see the table at the top): it makes the right template, checks it, and saves it into the right folder. <strong>Use selected subnet</strong> checks and saves a subnet you built anywhere, as the kind you picked.</p>
+<p>A <strong>grunge</strong> can also be just an image file in <code>grunges/</code>, and an <strong>alpha</strong> is an image file in <code>alphas/</code> (white paints, black doesn't): no subnet needed, drop the file in the folder.</p>
 <p><strong>Help &gt; Example: making assets</strong> opens a network with one sample of each kind, each with a note on how it's built.</p>
 
 
