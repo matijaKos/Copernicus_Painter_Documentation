@@ -7,7 +7,7 @@ A smart material is a Copernicus **subnet**:
 - **inputs** named after the baked maps it reads (Curvature, Occlusion, Position...);
 - **controls** on the subnet, which show in Properties when its layer is selected.
 
-A **smart mask** is the same with one output, **Mask**. Both are made in the **Library** window and saved to your library. **Help > Make your own smart material** is a step-by-step tour of it.
+A **smart mask** is the same with one output, **Mask**. Generators, procedurals, grunges, mask filters and layer filters are subnets too, with their own inputs and outputs. All of them are made in the **Library** window and saved to your library. **Help > Make your own smart material** is a step-by-step tour of it.
 
 ![Making a smart material](videos/smart_material.gif)
 
@@ -17,18 +17,28 @@ Click **Library** on the Painter shelf.
 
 ![The Library window](images/library_window.png)
 
-At the top, pick **Smart Material** or **Smart Mask**.
+At the top, **New** (make one) or **Edit** (change one of your library), then **What is it?**:
+
+| Kind | What it needs | Where it goes while you build | Saved to |
+|---|---|---|---|
+| **Smart Material** | outputs named after the channels it makes; inputs named after the bakes it reads | a new layer | `materials/` |
+| **Smart Mask** | one mono output, `Mask` | the selected layer's masks | `smart_masks/` |
+| **Generator** | `Mask` out, made from bakes (`Curvature`, `Occlusion`...) | the selected layer's masks | `generators/` |
+| **Procedural** | `Mask` out, a noise or a pattern, no inputs needed | the selected layer's masks | `procedurals/` |
+| **Grunge** | `Mask` out, wear or dirt as a pattern | the selected layer's masks | `grunges/` |
+| **Mask Filter** | a `Mask` input (the masks below it) and a `Mask` output | the selected layer's masks | `filters/` |
+| **Layer Filter** | per channel it changes, an input and an output of that name (`BaseColor` in, `BaseColor` out) | the selected layer's filters | `filters/` |
+
+The window shows what the kind needs right under it.
 
 ## 2. New
 
 - **Name** it.
-- Pick its **Channels (outputs)**: BaseColor, Roughness, Metalness, Normal, Height, Specular, AO, Opacity.
+- Pick its **Channels**: for a smart material its outputs, for a layer filter the channels it changes.
 - Pick the **Baked maps it reads (inputs)**: normal, worldnormal, position, occlusion, curvature, edge, cavity, thickness, height, alpha.
-- Click **Create and edit**.
+- Click **Create** (**on a new layer** for a smart material, **on the selected layer** for the rest).
 
-You get a layer with a ready subnet: every output is there, typed and named, fed by a constant, and every input is wired to its bake. The network editor opens inside it.
-
-A smart mask goes on the selected layer instead (**Create on selected layer**).
+You get a ready subnet that already meets the kind's needs: every output is there, typed and named, every input wired. A smart material's outputs start as constants; a filter's pass what comes in straight out, so it changes nothing until you build inside it. The network editor opens inside it.
 
 Already built a subnet yourself? Select it in the network editor and click **Use selected subnet**.
 
@@ -63,9 +73,9 @@ Then fill in:
 - **Library**: one of your library folders (Settings); the samples are read-only.
 - **Group**: optional, e.g. `Metal/Rust`.
 
-Click **Save to Library**. It is saved with a rendered icon, and appears on the **Materials** shelf (smart masks on **Smart Masks**).
+Click **Save to Library**. It goes into the folder of its kind (see the table above), with an icon: a rendered ball for a smart material, the mask it makes for the others. It appears on the shelf tab of its kind.
 
-**From library > Edit** opens a saved one again as a new layer (for a mask, **Add to selected layer**).
+**Edit** opens one of your library's again: pick it and click **Edit** (on a new layer for a smart material, on the selected layer for the rest). Saving a sample makes a copy in your library; your own saves back where it was.
 
 ## Names the Painter reads
 
@@ -91,17 +101,8 @@ Names are CamelCase and matched ignoring case. A smart mask with an input named 
 
 ## Generators, procedurals, grunges, filters and alphas
 
-They are made the same way, as Copernicus subnets saved as `.cpio` files; only their inputs, outputs and the library folder they're in differ:
+Pick the kind in the Library window (see the table at the top): it makes the right template, checks it, and saves it into the right folder. **Use selected subnet** checks and saves a subnet you built anywhere, as the kind you picked.
 
-| Kind | Inputs | Outputs | Library folder |
-|---|---|---|---|
-| Generator | bakes (`Curvature`, `Occlusion`...) | `Mask` | `generators/` |
-| Procedural (noise, pattern) | none | `Mask` | `procedurals/` |
-| Grunge | none | `Mask` (or just an image file) | `grunges/` |
-| Layer filter | the channels it changes (`BaseColor`...) | the same channels | `filters/Layer/` |
-| Mask filter | `Mask` | `Mask` | `filters/Mask/` |
-| Alpha | an image file (white paints, black doesn't) | | `alphas/` |
-
-Save one as a **Smart Mask** with the Library window (**Use selected subnet** saves a subnet you built anywhere), then move its folder from `smart_masks/` into the folder of its kind. The shelf picks it up there.
+A **grunge** can also be just an image file in `grunges/`, and an **alpha** is an image file in `alphas/` (white paints, black doesn't): no subnet needed, drop the file in the folder.
 
 **Help > Example: making assets** opens a network with one sample of each kind, each with a note on how it's built.
