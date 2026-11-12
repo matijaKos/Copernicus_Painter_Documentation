@@ -554,6 +554,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. Bake the mesh maps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#baking-a-high-poly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baking a high poly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -828,6 +845,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. Bake the mesh maps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#baking-a-high-poly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baking a high poly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -953,6 +987,18 @@
 <p>Click <strong>Bake</strong>. The baked maps are what generators and smart materials read: curvature for edge wear, occlusion for dirt in the cavities, position for gradients.</p>
 <p><img alt="Bake" src="../images/bake.png" /></p>
 <p>Pick the resolution, the low-poly mesh (your project's), optionally a high-poly and a cage, tick the maps and click <strong>Bake Textures</strong>. Bake at least <strong>Position</strong> and <strong>World Normal</strong>, which the projections need. <strong>Preview Baked Channel</strong> shows a map on the model.</p>
+<h3 id="baking-a-high-poly">Baking a high poly<a class="headerlink" href="#baking-a-high-poly" title="Permanent link">&para;</a></h3>
+<p>With a <strong>High Poly SOP Path</strong>, its detail is baked onto your project's mesh, as in Substance Painter: the <strong>Normal</strong>, <strong>Ambient Occlusion</strong>, <strong>Curvature</strong>, <strong>Cavity</strong>, <strong>Edge</strong>, <strong>Thickness</strong> and <strong>Height</strong> come from the high poly.</p>
+<ul>
+<li><strong>Max Frontal Distance</strong> and <strong>Max Rear Distance</strong> say how far outside and inside the low poly the bake looks for the high poly, as a fraction of the model's size (0.02 = 2%). Where nothing is found in that range, the low poly's own surface is used. Raise them if detail is missing; lower them if parts pick up the wrong surface (dark streaks, detail from a nearby part). Rays ignore the high poly's back faces.</li>
+<li>Behind the scenes this is Houdini's own <strong>Bake Pre-Process</strong> cage; give your own <strong>Cage</strong> for full control.</li>
+<li><strong>Position</strong> and <strong>World Normal</strong> always come from your project's mesh: projections, decals, the 3D Path and position-based masks need the surface the textures are on.</li>
+<li>The baked <strong>Height</strong> is a map for generators and smart masks; it is not added to the layers' Height (Substance Painter doesn't either). The high poly's bumps are already in the baked Normal.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The high poly should be the same shape as the low poly with more detail (sculpted, subdivided, small noise). A high poly that differs a lot from the low poly (a strong noise that changes the silhouette) bakes badly in any baker.</p>
+</div>
 <h2 id="4-layers">4. Layers<a class="headerlink" href="#4-layers" title="Permanent link">&para;</a></h2>
 <p>The shelf at the bottom is your library. Drag a material onto the <strong>Layers</strong> panel. <strong>Materials</strong> are procedural, with controls; <strong>Textures</strong> are image sets. Drop more, then add masks and filters to them.</p>
 <p><img alt="Building a layer stack" src="../videos/layer_stack.gif" /></p>
