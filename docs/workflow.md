@@ -42,6 +42,18 @@ Click **Bake**. The baked maps are what generators and smart materials read: cur
 
 Pick the resolution, the low-poly mesh (your project's), optionally a high-poly and a cage, tick the maps and click **Bake Textures**. Bake at least **Position** and **World Normal**, which the projections need. **Preview Baked Channel** shows a map on the model.
 
+### Baking a high poly
+
+With a **High Poly SOP Path**, its detail is baked onto your project's mesh, as in Substance Painter: the **Normal**, **Ambient Occlusion**, **Curvature**, **Cavity**, **Edge**, **Thickness** and **Height** come from the high poly.
+
+- **Max Frontal Distance** and **Max Rear Distance** say how far outside and inside the low poly the bake looks for the high poly, as a fraction of the model's size (0.02 = 2%). Where nothing is found in that range, the low poly's own surface is used. Raise them if detail is missing; lower them if parts pick up the wrong surface (dark streaks, detail from a nearby part). Rays ignore the high poly's back faces.
+- Behind the scenes this is Houdini's own **Bake Pre-Process** cage; give your own **Cage** for full control.
+- **Position** and **World Normal** always come from your project's mesh: projections, decals, the 3D Path and position-based masks need the surface the textures are on.
+- The baked **Height** is a map for generators and smart masks; it is not added to the layers' Height (Substance Painter doesn't either). The high poly's bumps are already in the baked Normal.
+
+!!! tip
+    The high poly should be the same shape as the low poly with more detail (sculpted, subdivided, small noise). A high poly that differs a lot from the low poly (a strong noise that changes the silhouette) bakes badly in any baker.
+
 ## 4. Layers
 
 The shelf at the bottom is your library. Drag a material onto the **Layers** panel. **Materials** are procedural, with controls; **Textures** are image sets. Drop more, then add masks and filters to them.
