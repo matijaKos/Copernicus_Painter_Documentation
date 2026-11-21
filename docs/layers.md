@@ -9,7 +9,7 @@ Layers stack like in Substance Painter: the top layer covers the ones below. Eac
 - the **arrow**, which shows the layer's masks and filters;
 - the **eye**, to hide it;
 - its icon and name (double-click to rename);
-- **Opacity** and the **blend mode** (Normal, Add, Subtract, Multiply, Screen, Overlay);
+- **Opacity** and the **blend mode** (Normal, Add, Subtract, Multiply, Screen, Overlay). The Normal channel's blend is different: **Offset** / **Signed** combine the layer's bumps with the ones below (Substance Painter's *Normal map Detail*), **Replace** hides the bumps below where the layer shows (Painter's *Normal*: smooth paint over a rough fabric);
 - **delete** (the red cross).
 
 Drag rows to reorder them. Right-click a layer for **Duplicate Layer**, **New Folder**, **Move into / out of Folder**, **Merge** / **Merge Down**, **Add Mask** and **Save as Smart Material…** (the layer or folder with all in it, to your library: see [Saving layers as a smart material](library.md#saving-layers-as-a-smart-material)).
@@ -34,6 +34,7 @@ At the top of the panel:
 
 - **Groups**: the texture sets of the project. Each has its own stack; the eye hides it in the viewer.
 - **Channel**: which channel's opacity and blend mode the layer rows show and edit (BaseColor, Roughness, Normal...).
+- **Channels**: the [extra channels](#extra-channels) the project has (Emission, Transmission, Subsurface).
 - **View**: what the 3D and 2D views show: **Material**, or one channel alone (BaseColor, Roughness, Metalness, Normal, Height...), flat and unlit, like Substance Painter's channel views. It is only a way of looking, not an edit (no undo step), and the project remembers it.
 - **Resolution**: the project's texture size.
 - **Height to Normal**: see [below](#height-to-normal).
@@ -49,12 +50,34 @@ For a layer:
 - **Fill**: how it's put on the model.
     - **Projection**: *UV*, or *Planar*, *Triplanar*, *Cylinder*, *Spherical* with a gizmo in the viewer (**Edit Gizmo**). **Clip to shape** limits it to the gizmo.
     - **Tiling**, **Offset** and **Rotation**. The lock keeps U and V together. On a smart material, Tiling and Offset scale and move its pattern (grain, noise, grunge), while what follows the model (edge wear, dirt in the cavities) stays where it is. Rotation applies to image materials only.
-- **Material**: which channels the layer writes (click to turn one off) and their values.
+- **Material**: which channels the layer writes (click to turn one off) and their values. A colour's swatch (or its button) opens Houdini's colour editor.
 - The material's own controls: colours, patterns, wear, grain... whatever its maker put on it.
+
+## Extra channels
+
+A project has the usual channels: BaseColor, Roughness, Metalness, Specular, Normal, Height, AO and Opacity. For glowing, see-through or translucent materials, add more with **Channels** (above the stack), like the channels of a Substance Painter texture set:
+
+| Channel | For | Where it shows |
+|---|---|---|
+| **Emission** | Glow: screens, lamps, lava, runes (an RGB colour; black emits nothing) | 3D view, Render, export |
+| **Transmission** | Glass, water, gems: light passing through | Render (Karma); roughly in the 3D view |
+| **Subsurface** + **Subsurface Color** | Skin, wax, leaves, marble: light scattering inside | Render (Karma); roughly in the 3D view |
+
+Tick one to add it, untick it to remove it (one undo step each). Each channel adds nodes to every layer, so add only the ones you use.
+
+When you add a channel:
+
+- every layer gets it, **off** (in Properties > Material, click its button to turn it on, then set its value or texture);
+- a smart material layer whose material has an output for it (an **Emission** output, say) uses that output straight away;
+- layers added after it fill it like the other channels: a texture folder's `_Emissive`, `_Transmission`, `_Subsurface` / `_SSS` maps, a smart material's *Emission*, *Transmission*, *Subsurface*, *Subsurface Color* outputs.
+
+**View** shows a channel alone (View > Emission...), the **Render** view uses them (and Opacity, for cut-outs), and **Export** writes them: tick Emission, Transmission or Subsurface in the preset.
 
 ## Masks
 
 A mask says where its layer shows: **white shows the layer, black hides it**. Masks stack like layers. The first starts from black, each one goes on top with its own blend mode and opacity, and **inv** inverts one. Several masks add up the way their blend modes say.
+
+Each mask has an **eye**: off, that mask adds nothing (its opacity is kept for when you turn it on again). Filters have the same eye.
 
 Ways to add a mask:
 

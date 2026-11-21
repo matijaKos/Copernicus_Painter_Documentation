@@ -49,7 +49,7 @@ With a **High Poly SOP Path**, its detail is baked onto your project's mesh, as 
 - **Max Frontal Distance** and **Max Rear Distance** say how far outside and inside the low poly the bake looks for the high poly, as a fraction of the model's size (0.02 = 2%). Where nothing is found in that range, the low poly's own surface is used. Raise them if detail is missing; lower them if parts pick up the wrong surface (dark streaks, detail from a nearby part). Rays ignore the high poly's back faces.
 - Behind the scenes this is Houdini's own **Bake Pre-Process** cage; give your own **Cage** for full control.
 - **Position** and **World Normal** always come from your project's mesh: projections, decals, the 3D Path and position-based masks need the surface the textures are on.
-- The baked **Height** is a map for generators and smart masks; it is not added to the layers' Height (Substance Painter doesn't either). The high poly's bumps are already in the baked Normal.
+- The baked **Height** is a map for generators and smart masks; by default it is not added to the layers' Height (Substance Painter doesn't either), as the high poly's bumps are already in the baked Normal. Tick **Use baked height as the base height** (under the channels) to start the layers' Height from it, e.g. to export the high poly's detail in your height map.
 
 !!! tip
     The high poly should be the same shape as the low poly with more detail (sculpted, subdivided, small noise). A high poly that differs a lot from the low poly (a strong noise that changes the silhouette) bakes badly in any baker.
@@ -83,6 +83,8 @@ The render lives in the project, in a Solaris network called **RENDER** next to 
 | **Rotation**, **Exposure** | Turn and brighten the environment |
 
 **Save Settings** applies them at once, also to a render that is on.
+
+While the render is on, a small **Render Light** window shows next to the view with the environment, its rotation and exposure, and the quality: changes show at once and are remembered. **Shift + drag** left and right in the render view turns the light around the model, as in Substance Painter.
 
 !!! note
     The render is a preview in the viewport. To render to disk, **Export** the textures and use them in your own Solaris or Karma scene.
